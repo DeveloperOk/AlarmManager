@@ -20,10 +20,32 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.enterprise.alarmmanager.ui.theme.AlarmManagerTheme
+import java.util.Calendar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Medium post
+        //https://medium.com/kotlin-t%C3%BCrkiye/3-androidde-alarm-manager-i%CC%87le-belirli-zamanda-bildirim-g%C3%B6nderme-23eb2871ded5
+
+        //Don't forget the part which is added to the AndroidManifest.xml
+        val appAlarmScheduler = AppAlarmScheduler(context = this)
+
+        val reminderItem = ReminderItem(
+            time = Calendar.getInstance().apply {
+                //set(Calendar.HOUR_OF_DAY, 19)
+                //set(Calendar.MINUTE, 0)
+                set(Calendar.HOUR_OF_DAY, 1)
+                set(Calendar.MINUTE, 37)
+            }.timeInMillis,
+            id = 1,
+        )
+
+        appAlarmScheduler
+            .schedule(reminderItem)
+
+
         enableEdgeToEdge()
         setContent {
             AlarmManagerTheme {
