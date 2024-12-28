@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AlarmManager</string>
+
+    <string name="main_acitivity_alarm_manager_message">Alarm Manager</string>
+
+</resources>
